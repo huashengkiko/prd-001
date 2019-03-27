@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deepexi.pay.mapper.HspTimetypeCountMapper">
+    <resultMap type="com.deepexi.pay.domain.dto.HspTimetypeCountDto" id="HspTimetypeCountDtoResult">
+        <result property="id" column="id" />
+        <result property="countDaily" column="count_daily" />
+        <result property="countWeekly" column="count_weekly" />
+        <result property="countPermonth" column="count_permonth" />
+        <result property="countType" column="count_type" />
+        <result property="timeType" column="time_type" />
+        <result property="tenantCode" column="tenant_code" />
+        <result property="createdAt" column="created_at" />
+        <result property="createdBy" column="created_by" />
+        <result property="updatedAt" column="updated_at" />
+        <result property="updatedBy" column="updated_by" />
+        <result property="version" column="version" />
+        <result property="dr" column="dr" />
+        <result property="remark1" column="remark1" />
+        <result property="remark2" column="remark2" />
+        <result property="remark3" column="remark3" />
+        <result property="remark4" column="remark4" />
+    </resultMap>
+    <select id="findList" resultType="com.deepexi.pay.domain.eo.HspTimetypeCount">
+        SELECT * FROM hsp_timetype_count WHERE 1=1
+    </select>
+
+    <update id="deleteByIds">
+        UPDATE hsp_timetype_count set dr=1 where id in
+        <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>

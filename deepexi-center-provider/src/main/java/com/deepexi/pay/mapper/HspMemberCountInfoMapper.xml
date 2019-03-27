@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deepexi.pay.mapper.HspMemberCountInfoMapper">
+    <resultMap type="com.deepexi.pay.domain.dto.HspMemberCountInfoDto" id="HspMemberCountInfoDtoResult">
+        <result property="id" column="id" />
+        <result property="accountId" column="account_id" />
+        <result property="typeId" column="type_id" />
+        <result property="name" column="name" />
+        <result property="type" column="type" />
+        <result property="productItemName" column="product_item_name" />
+        <result property="productItemId" column="product_item_id" />
+        <result property="pushDate" column="push_date" />
+        <result property="push" column="push" />
+        <result property="lookDate" column="look_date" />
+        <result property="look" column="look" />
+        <result property="partakeDate" column="partake_date" />
+        <result property="partake" column="partake" />
+        <result property="paymentDate" column="payment_date" />
+        <result property="payment" column="payment" />
+        <result property="shareDate" column="share_date" />
+        <result property="share" column="share" />
+        <result property="pushId" column="push_id" />
+        <result property="pushType" column="push_type" />
+        <result property="payId" column="pay_id" />
+        <result property="orderId" column="order_id" />
+        <result property="tenantCode" column="tenant_code" />
+        <result property="createdAt" column="created_at" />
+        <result property="createdBy" column="created_by" />
+        <result property="updatedAt" column="updated_at" />
+        <result property="updatedBy" column="updated_by" />
+        <result property="version" column="version" />
+        <result property="dr" column="dr" />
+        <result property="remark1" column="remark1" />
+        <result property="remark2" column="remark2" />
+        <result property="remark3" column="remark3" />
+        <result property="remark4" column="remark4" />
+    </resultMap>
+    <select id="findList" resultType="com.deepexi.pay.domain.eo.HspMemberCountInfo">
+        SELECT * FROM hsp_member_count_info WHERE 1=1
+    </select>
+
+    <update id="deleteByIds">
+        UPDATE hsp_member_count_info set dr=1 where id in
+        <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>

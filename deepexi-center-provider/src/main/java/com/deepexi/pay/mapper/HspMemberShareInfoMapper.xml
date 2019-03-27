@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.deepexi.pay.mapper.HspMemberShareInfoMapper">
+    <resultMap type="com.deepexi.pay.domain.dto.HspMemberShareInfoDto" id="HspMemberShareInfoDtoResult">
+        <result property="id" column="id" />
+        <result property="accountId" column="account_id" />
+        <result property="typeId" column="type_id" />
+        <result property="type" column="type" />
+        <result property="title" column="title" />
+        <result property="channel" column="channel" />
+        <result property="shareNum" column="share_num" />
+        <result property="beShareNum" column="be_share_num" />
+        <result property="browseNum" column="browse_num" />
+        <result property="registerNum" column="register_num" />
+        <result property="paidMemberNum" column="paid_member_num" />
+        <result property="tenantCode" column="tenant_code" />
+        <result property="createdAt" column="created_at" />
+        <result property="createdBy" column="created_by" />
+        <result property="updatedAt" column="updated_at" />
+        <result property="updatedBy" column="updated_by" />
+        <result property="version" column="version" />
+        <result property="dr" column="dr" />
+        <result property="remark1" column="remark1" />
+        <result property="remark2" column="remark2" />
+        <result property="remark3" column="remark3" />
+        <result property="remark4" column="remark4" />
+    </resultMap>
+    <select id="findList" resultType="com.deepexi.pay.domain.eo.HspMemberShareInfo">
+        SELECT * FROM hsp_member_share_info WHERE 1=1
+    </select>
+
+    <update id="deleteByIds">
+        UPDATE hsp_member_share_info set dr=1 where id in
+        <foreach collection="ids" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+</mapper>
